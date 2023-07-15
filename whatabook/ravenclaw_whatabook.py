@@ -23,11 +23,12 @@ def display_books():
     for book in db.books.find({}):
         print(f"{book['title']} by {book['author']} \n Details: \n  Genre: {book['genre']} \n  bookId: {book['bookId']} \n")
 
-print("Displaying all books in What-A-Book's collection \n")
+print("---Displaying all books in What-A-Book's collection--- \n")
 print(display_books())
 
+
+print("---See books by any of the following genres---")
 genres = db.books.distinct("genre")
-print("See books by any of the following genres")
 for genre in genres:
     print(genre)
     
@@ -35,8 +36,7 @@ print()
 
 
 for genre in genres:
-    print("Displaying books by genre:")
-    print(f"{genre} \n")
+    print(f"Displaying books by the genre: {genre} \n")
     books = db.books.find({"genre": genre})
     for book in books:
         print(f"{book['title']} by {book['author']} \n Details: \n  Genre: {book['genre']} \n  bookId: {book['bookId']} \n")
