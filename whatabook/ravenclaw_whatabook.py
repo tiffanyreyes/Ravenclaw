@@ -27,9 +27,17 @@ print("Displaying all books in What-A-Book's collection \n")
 print(display_books())
 
 genres = db.books.distinct("genre")
-print(genres)
- 
+print("See books by any of the following genres")
 for genre in genres:
+    print(genre)
+    
+print()
+
+
+for genre in genres:
+    print("Displaying books by genre:")
+    print(f"{genre} \n")
     books = db.books.find({"genre": genre})
     for book in books:
-        print(book)
+        print(f"{book['title']} by {book['author']} \n Details: \n  Genre: {book['genre']} \n  bookId: {book['bookId']} \n")
+
