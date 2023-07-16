@@ -1,0 +1,82 @@
+[
+    {"whatABook:":
+        {
+            "companyId": "129387",
+            "books": [
+                {
+                    "title": "Pride and Prejudice",
+                    "author": "Jane Austin",
+                    "genre": "Romance",
+                    "bookId": "R001"
+                },
+                {
+                    "title": "Harry Potter and the Prisoner of Azkaban",
+                    "author": "JK Rowling",
+                    "genre": "Fantasy",
+                    "bookId": "F003"
+                },
+                {
+                    "title": "Harry Potter and the Goblet of Fire",
+                    "author": "JK Rowling",
+                    "genre": "Fantasy",
+                    "bookId": "F004"
+                }
+            ],
+            "customers": [
+                {
+                    "customerId": "0003",
+                    "firstName": "Mina",
+                    "lastName": "Myoi",
+                    "wishlist": {
+                        "wishlistId": "10000",
+                        "customerId": "0003",
+                        "wishListBooks": [
+                            {
+                                "title": "Harry Potter and the Prisoner of Azkaban",
+                                "author": "JK Rowling",
+                                "genre": "Fantasy",
+                                "bookId": "F003"
+                            },
+                            {
+                                "title": "Harry Potter and the Goblet of Fire",
+                                "author": "JK Rowling",
+                                "genre": "Fantasy",
+                                "bookId": "F004"
+                            }
+                        ]
+                    }
+                   
+                },
+                {
+                    "customerId": "0004",
+                    "firstName": "Jihyo",
+                    "lastName": "Park",
+                    "wishlist": {
+                        "wishlistId": "10001",
+                        "customerId": "0004",
+                        "wishListBooks": [
+                            {
+                                "title": "Pride and Prejudice",
+                                "author": "Jane Austin",
+                                "genre": "Romance",
+                                "bookId": "R001"
+                            },
+                            {
+                                "title": "Harry Potter and the Prisoner of Azkaban",
+                                "author": "JK Rowling",
+                                "genre": "Fantasy",
+                                "bookId": "F003"
+                            }
+                        ]
+                    }
+                   
+                }
+               
+            ]
+        }
+    }
+]
+
+
+
+
