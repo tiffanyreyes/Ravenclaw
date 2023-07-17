@@ -157,3 +157,28 @@ db.books.find( { "author": "Jane Austin" } );
 
 // Query to display a book by bookId
 db.books.find( { "bookId": "R001" } );
+
+// Query to display a wishlist by customerId
+db.wishlists.find( { "customerId": "0004" } );
+
+// Query to add a book to customer's wishlist
+db.wishlist.updateOne(
+    { "customerId": "0004" },
+    { "$addToSet": {
+        wishlist: {
+            "title": "Scythe",
+            "author": "Neal Shusterman",
+            "genre": "Fantasy",
+            "bookId": "F005"
+        }
+    }}
+);
+
+// Query to remove a book from customer's wishlist
+db.wishlist.updateOne(
+    { "customerId": "0004" },
+    { "$pull": {
+        wishlistbooks: { "bookId": { $eq: "F005" } }
+    }
+}
+);
