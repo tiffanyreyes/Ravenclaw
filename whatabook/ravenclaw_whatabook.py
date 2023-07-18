@@ -43,6 +43,7 @@ def displayBooksByGenre(selection):
 
 print(displayBooksByGenre("Fantasy"))
 
+# display books in wishlist by customerId
 def display_wishlist_by_customerid(customer_Id):
     print("Enter your customerId to view your wishlist \n")
     customer = db.customers.find_one({"customerId": customer_Id})
