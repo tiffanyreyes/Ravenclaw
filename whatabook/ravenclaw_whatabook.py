@@ -27,17 +27,39 @@ print("---Displaying all books in What-A-Book's collection--- \n")
 print(display_books())
 
 
-print("---See books by any of the following genres---")
-genres = db.books.distinct("genre")
-for genre in genres:
-    print(genre)
-    
 print()
 
+# Display books by genre
 
-for genre in genres:
-    print(f"Displaying books by the genre: {genre} \n")
-    books = db.books.find({"genre": genre})
-    for book in books:
-        print(f"{book['title']} by {book['author']} \n Details: \n  Genre: {book['genre']} \n  bookId: {book['bookId']} \n")
+def displayBooksByGenre(selection):
+    print("--Select one of the following genres to see books--- ")
+    genres = db.books.distinct("genre")
+    for genre in genres:
+        print(genre)    
+        if selection == genre:
+            books = db.books.find({"genre": selection})
+            print(f"\n ---Displaying books by the genre: {selection}--- \n")
+            for book in books:
+                print(f"{book['title']} by {book['author']} \n Details: \n  Genre: {book['genre']} \n  bookId: {book['bookId']} \n")
+
+print(displayBooksByGenre("Fantasy"))
+
+def display_wishlist_by_customerid(customer_Id):
+    wishlist = db.wishlists.find_one({"customerId": customer_Id})
+    
+
+    book_id = wishlist['wishlistbooks'][0-1]
+    print(book_id)
+
+
+print(display_wishlist_by_customerid("0004"))
+        
+    
+
+
+                
+
+
+
+
 
