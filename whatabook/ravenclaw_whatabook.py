@@ -45,13 +45,18 @@ def displayBooksByGenre(selection):
 print(displayBooksByGenre("Fantasy"))
 
 def display_wishlist_by_customerid(customer_Id):
-    wishlist = db.wishlists.find_one({"customerId": customer_Id})
+    wishlist = db.wishlists.find_one({"customerId": customer_Id}, {"_id": 0, "wishlistbooks": 1})
+    name = db.customers.find_one({"customerId": customer_Id}, {"_id":0, "firstName": 1})
+    name1 = name["firstName"]
     
-
-    book_id = wishlist['wishlistbooks'][0-1]
-    print(book_id)
-
-
+    wishlist_items = wishlist["wishlistbooks"]
+    print(f"----Displaying books on  {name1}'s Wishlist: --- \n ")
+    for items in wishlist_items:
+        book_id = items['bookId']
+        details = db.books.find({"bookId": book_id})
+        for book in details:
+            print(f"{book['title']} by {book['author']} \n ")
+        
 print(display_wishlist_by_customerid("0004"))
         
     
