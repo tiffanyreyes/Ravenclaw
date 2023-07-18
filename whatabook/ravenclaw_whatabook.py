@@ -36,11 +36,10 @@ def displayBooksByGenre(selection):
     genres = db.books.distinct("genre")
     for genre in genres:
         print(genre)    
-        if selection == genre:
-            books = db.books.find({"genre": selection})
-            print(f"\n ---Displaying books by the genre: {selection}--- \n")
-            for book in books:
-                print(f"{book['title']} by {book['author']} \n Details: \n  Genre: {book['genre']} \n  bookId: {book['bookId']} \n")
+    books = db.books.find({"genre": selection})
+    print(f"\n ---Displaying books by the genre: {selection}--- \n")
+    for book in books:
+        print(f"{book['title']} by {book['author']} \n Details: \n  Genre: {book['genre']} \n  bookId: {book['bookId']} \n")
 
 print(displayBooksByGenre("Fantasy"))
 
@@ -56,7 +55,7 @@ def display_wishlist_by_customerid(customer_Id):
             book_id = items['bookId']
             details = db.books.find({"bookId": book_id})
             for book in details:
-                print(f"{book['title']} by {book['author']} \n ")
+                print(f"* {book['title']} \n    by {book['author']} \n ")
     else:
         print("Invalid, this customerId does not exist in our system. Please try again.")
         
