@@ -165,11 +165,8 @@ db.wishlists.find( { "customerId": "0004" } );
 db.wishlist.updateOne(
     { "customerId": "0004" },
     { "$addToSet": {
-        wishlist: {
-            "title": "Scythe",
-            "author": "Neal Shusterman",
-            "genre": "Fantasy",
-            "bookId": "F005"
+        wishlistbooks: {
+            "bookId": "R001"
         }
     }}
 );
@@ -178,7 +175,7 @@ db.wishlist.updateOne(
 db.wishlist.updateOne(
     { "customerId": "0004" },
     { "$pull": {
-        wishlistbooks: { "bookId": { $eq: "F005" } }
+        wishlistbooks: { "bookId": { $eq: "R001" } }
     }
 }
 );
