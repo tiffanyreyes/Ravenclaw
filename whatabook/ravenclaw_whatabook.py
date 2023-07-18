@@ -45,18 +45,22 @@ def displayBooksByGenre(selection):
 print(displayBooksByGenre("Fantasy"))
 
 def display_wishlist_by_customerid(customer_Id):
-    wishlist = db.wishlists.find_one({"customerId": customer_Id}, {"_id": 0, "wishlistbooks": 1})
-    name = db.customers.find_one({"customerId": customer_Id}, {"_id":0, "firstName": 1})
-    name1 = name["firstName"]
-    
-    wishlist_items = wishlist["wishlistbooks"]
-    print(f"----Displaying books on  {name1}'s Wishlist: --- \n ")
-    for items in wishlist_items:
-        book_id = items['bookId']
-        details = db.books.find({"bookId": book_id})
-        for book in details:
-            print(f"{book['title']} by {book['author']} \n ")
+    print("Enter your customerId to view your wishlist \n")
+    customer = db.customers.find_one({"customerId": customer_Id})
+    if customer:
+        wishlist = db.wishlists.find_one({"customerId": customer_Id}, {"_id": 0, "wishlistbooks": 1})
+        wishlist_items = wishlist["wishlistbooks"]
+        customer_name = customer["firstName"]
+        print(f"----Displaying books in {customer_name}'s Wishlist: --- \n ")
+        for items in wishlist_items:
+            book_id = items['bookId']
+            details = db.books.find({"bookId": book_id})
+            for book in details:
+                print(f"{book['title']} by {book['author']} \n ")
+    else:
+        print("Invalid, this customerId does not exist in our system. Please try again.")
         
+   
 print(display_wishlist_by_customerid("0004"))
         
     
