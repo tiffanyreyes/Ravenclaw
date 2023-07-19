@@ -92,10 +92,26 @@ let book3 = {
     "bookId": "F004"
 };
 
+let book4 = {
+    "title": "The Last Song",
+    "author": "Nicholas Sparks",
+    "genre": "Romance",
+    "bookId": "R002"
+};
+let book5 = {
+    "title": "The Postman Always Rings Twice",
+    "author": "James M. Cain",
+    "genre": "Mystery",
+    "bookId": "M008"
+};
+
+
 // Insert book documents
 db.books.insertOne(book1);
 db.books.insertOne(book2);
 db.books.insertOne(book3);
+db.books.insertOne(book4);
+db.books.insertOne(book5);
 
 // Customers
 let customer1 = {
@@ -123,7 +139,7 @@ let wishlist1 = {
             "bookId": "F003"
         },
         {
-            "bookId": "F004"
+            "bookId": "M008"
         }
     ]
 };
@@ -136,7 +152,7 @@ let wishlist2 = {
             "bookId": "R001"
         },
         {
-            "bookId": "F003"
+            "bookId": "R002"
         }
     ]
 };
@@ -159,7 +175,7 @@ db.books.find( { "author": "Jane Austin" } );
 db.books.find( { "bookId": "R001" } );
 
 // Query to display a wishlist by customerId
-db.wishlists.find( { "customerId": "0004" } );
+db.wishlists.aggregate([{$lookup: {from: "books", localField: "wishlistbooks.bookId", foreignField: "bookId", as: "wishlistbooks"}}, {$match: {"customerId": "0004"}}])
 
 // Query to add a book to customer's wishlist
 db.wishlist.updateOne(

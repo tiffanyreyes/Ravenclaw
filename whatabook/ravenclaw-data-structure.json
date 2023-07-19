@@ -20,7 +20,20 @@
                     "author": "JK Rowling",
                     "genre": "Fantasy",
                     "bookId": "F004"
+                }, 
+                {
+                    "title": "The Last Song",
+                    "author": "Nicholas Sparks",
+                    "genre": "Romance",
+                    "bookId": "R002"
+                },
+                {
+                    "title": "The Postman Always Rings Twice",
+                    "author": "James M. Cain",
+                    "genre": "Mystery",
+                    "bookId": "M008"
                 }
+
             ],
             "customers": [
                 {
@@ -56,16 +69,18 @@
                         "customerId": "0004",
                         "wishListBooks": [
                             {
-                                "title": "Pride and Prejudice",
-                                "author": "Jane Austin",
-                                "genre": "Romance",
-                                "bookId": "R001"
-                            },
-                            {
                                 "title": "Harry Potter and the Prisoner of Azkaban",
                                 "author": "JK Rowling",
                                 "genre": "Fantasy",
                                 "bookId": "F003"
+
+                            },
+                            {
+                                "title": "The Postman Always Rings Twice",
+                                "author": "James M. Cain",
+                                "genre": "Mystery",
+                                "bookId": "M008"
+            
                             }
                         ]
                     }
